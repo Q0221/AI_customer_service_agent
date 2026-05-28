@@ -1,0 +1,30 @@
+---
+alwaysApply: true
+---
+# 项目规则
+
+本项目是面向电商售后场景的智能客服工单 Agent 系统。
+
+技术栈：
+- 后端：FastAPI (python3.10+)
+- Agent 编排：LangGraph
+- RAG：LangChain + Milvus + BM25 + Rerank
+- 数据库：MySQL 8.0
+- 缓存：Redis
+- 前端：Vue3
+- 部署：Docker Compose
+
+开发要求：
+1. 不要把所有逻辑写在一个文件里。
+2. Agent 节点必须拆分到 backend/app/agents/nodes。
+3. 业务工具必须放到 backend/app/tools。
+4. 数据库模型放到 backend/app/models。
+5. API 路由放到 backend/app/api。
+6. 每完成一个核心功能，需要补充 pytest 测试。
+7. 不允许直接写死真实 API Key，统一从 .env 读取。
+8. 对高风险、低置信度、投诉类问题必须创建工单转人工。
+9. Agent 不允许直接操作数据库，必须通过 service 或 tool。
+10. 回答类接口要保留 trace_id，方便排查问题。
+11. 所有代码的关键逻辑必须包含中文注释。
+12. 不要自动提交git，除非我明确要求。
+13. 每次修改后必须给出测试指令。
